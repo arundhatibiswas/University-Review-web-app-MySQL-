@@ -35,10 +35,10 @@ git clone https://github.com/arundhatibiswas/University-Review-web-app-MySQL-.gi
 
 The app uses a MySQL database with three related tables:
 
-users — stores an anonymous identity for each user (anonymous_id) instead of personal details, keeping reviewers anonymous.
-reviews — holds each review's text, a 1–5 rating, a category (Staff, Faculty, Student), and an is_flagged status; linked to users.
-flag — records reports on reviews (reason + timestamp), linking a flagged review to the user who reported it.
-admins — Stores admin/moderator accounts that manage the dashboard, review flags, and content moderation.
+users — stores an anonymous identity for each user (anonymous_id) instead of personal details, keeping reviewers anonymous.\n
+reviews — holds each review's text, a 1–5 rating, a category (Staff, Faculty, Student), and an is_flagged status; linked to users.\n
+flag — records reports on reviews (reason + timestamp), linking a flagged review to the user who reported it.\n
+admins — Stores admin/moderator accounts that manage the dashboard, review flags, and content moderation.\n
 
 Foreign keys connect reviews and flags back to users, with cascading deletes to keep data consistent. See ![tables](tables.txt) for the full schema.
 
