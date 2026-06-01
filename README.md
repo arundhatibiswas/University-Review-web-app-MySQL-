@@ -40,7 +40,7 @@ The app uses a MySQL database with three related tables:
 3. flag — records reports on reviews (reason + timestamp), linking a flagged review to the user who reported it.
 4. admins — Stores admin/moderator accounts that manage the dashboard, review flags, and content moderation.
 
-Foreign keys connect reviews and flags back to users, with cascading deletes to keep data consistent. See ![tables](tables.txt) for the full schema.
+Foreign keys connect reviews and flags back to users, with cascading deletes to keep data consistent. See [tables](tables.txt) for the full schema.
 
 
 ## 👤 Author
