@@ -1,0 +1,29 @@
+-- Users Table (Anonymous ID System)
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    anonymous_id VARCHAR(255) UNIQUE NOT NULL, -- Unique identifier instead of personal details
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Reviews Table
+CREATE TABLE reviews (
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT, -- Foreign key referencing users
+    review_text TEXT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5), -- 1 to 5 rating
+    category ENUM('Staff', 'Faculty', 'Student') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_flagged BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- Flag Table (For Reporting Reviews)
+CREATE TABLE flag (
+    flag_id INT PRIMARY KEY AUTO_INCREMENT,
+    review_id INT,
+    user_id INT, -- The user who flagged the review
+    reason TEXT NOT NULL,
+    flagged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (review_id) REFERENCES reviews(review_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
